@@ -54,6 +54,7 @@ resource "aws_launch_configuration" "workers" {
     volume_size           = "${lookup(var.worker_groups[count.index], "root_volume_size", local.workers_group_defaults["root_volume_size"])}"
     volume_type           = "${lookup(var.worker_groups[count.index], "root_volume_type", local.workers_group_defaults["root_volume_type"])}"
     iops                  = "${lookup(var.worker_groups[count.index], "root_iops", local.workers_group_defaults["root_iops"])}"
+    encrypted             = "${lookup(var.worker_groups[count.index], "encrypted", local.workers_group_defaults["root_encrypted"])}"
     delete_on_termination = true
   }
 }
